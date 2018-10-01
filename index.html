@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<!-- Copyright (c) 2014, the Dart project authors.  Please see the AUTHORS file
+     for details. All rights reserved. Use of this source code is governed by a
+     BSD-style license that can be found in the LICENSE file. -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/dart-64.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>DartPad</title>
+
+    <link href="styles/layout.css" rel="stylesheet" media="screen">
+    <link href="styles/index.css" rel="stylesheet" media="screen">
+    <link href="packages/dart_pad/elements/elements.css" rel="stylesheet" media="screen">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto'
+        rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700'
+        rel='stylesheet' type='text/css'>
+
+    <!-- codemirror -->
+    <link href="packages/codemirror/css/codemirror.css" rel="stylesheet" media="screen">
+    <link href="packages/codemirror/addon/lint/lint.css" rel="stylesheet" media="screen">
+    <link href="packages/codemirror/addon/hint/show-hint.css" rel="stylesheet" media="screen">
+    <link href="packages/codemirror/theme/zenburn.css" rel="stylesheet" media="screen">
+    <link href="packages/dart_pad/editing/editor_codemirror.css" rel="stylesheet" media="screen">
+    <script src="scripts/codemirror.js" defer></script>
+
+    <script defer src="scripts/main.dart.js"></script>
+
+    <script src="scripts/ga.js" defer></script>
+    <script src="scripts/polymerpatch.js" defer></script>
+  </head>
+
+  <body fullbleed layout vertical>
+    <header layout horizontal>
+      <div class="header-title">DartPad</div>
+      <div>
+        <button type="button" id="newbutton" class="button">New Pad…</button>
+        <button type="button" id="resetbutton" class="button" disabled>Reset…</button>
+        <button type="button" id="formatbutton" class="button">Format</button>
+      </div>
+      <div class="header-gist-name" flex></div>
+      <div>
+        <button type="button" id="sharebutton" class="button">Share…</button>
+      </div>
+      <div>
+        <select id="samples" required="false">
+          <option value="0">Samples</option>
+          <option disabled></option>
+          <option value="33706e19df021e52d98c">Hello World</option>
+          <option value="74e990d984faad26dea0">Fibonacci</option>
+          <option value="49bde0c1ed780decc902f3d4d06d8f0c">Sunflower</option>
+          <option value="479ecba5a56fd706b648">WebSockets</option>
+        </select>
+      </div>
+    </header>
+
+    <section flex layout horizontal>
+      <div class="splash"></div>
+
+      <div class="view" flex three layout vertical>
+        <div class="header" layout horizontal wrap>
+          <li><a id="darttab" selected class="arrow_box"><span>Dart</span></a></li>
+          <li><a id="htmltab"><span>HTML</span></a></li>
+          <li><a id="csstab"><span>CSS</span></a></li>
+          <div flex></div>
+          <div id="dartbusy" class="busylight"></div>
+          <div>
+            <button type="button" id="runbutton" class="button"
+                title="Run (ctrl-enter / ⌘-enter)">
+              <svg width="18" height="18" viewBox="0 0 24 24"
+                  style="vertical-align: text-bottom;">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Run
+            </button>
+          </div>
+        </div>
+        <div id="editpanel" flex layout vertical>
+        </div>
+      </div>
+
+      <div class="splitter" vertical id="editor_split">
+        <div class="inner"></div>
+      </div>
+
+      <div class="view" flex two layout vertical>
+        <div class="view" flex two layout vertical>
+          <div id="frame-overlay"></div>
+          <div class="header" layout horizontal wrap>
+            <div flex></div>
+            <li><a id="resulttab"><span>HTML Output</span></a></li>
+            <li><a id="consoletab" selected last><span>Console</span></a></li>
+            <div id="consolebusy" class="busylight"></div>
+          </div>
+          <div id="output" class="console" flex></div>
+          <!-- TODO: We might want to embed the iframe into a div, and set -->
+          <!-- div to overflow: scroll. -->
+          <iframe id="frame" sandbox="allow-scripts" flex src="scripts/frame.html">
+          </iframe>
+        </div>
+        <div class="splitter" horizontal id="output_split">
+          <div class="inner"></div>
+        </div>
+        <div class="view" flex layout vertical>
+          <div id="documentation" flex layout vertical></div>
+          <div id="issues"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer layout horizontal>
+      <div id="keyboard-button" class="keyboard footer-item"></div>
+      <div>
+        <a href="https://github.com/dart-lang/dart-pad/wiki/Privacy-Policy"
+            target="repo" class="footer-item">Privacy policy</a>
+        <a href="https://github.com/dart-lang/dart-pad/issues"
+            target="repo">Send feedback</a>
+      </div>
+      <div flex></div>
+      <div id="dartpad_version"> </div>
+    </footer>
+  </body>
+</html>
