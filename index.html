@@ -12,11 +12,11 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>DartPad</title>
+    <title>6Pad</title>
 
     <link href="styles/layout.css" rel="stylesheet" media="screen">
     <link href="styles/index.css" rel="stylesheet" media="screen">
-    <link href="packages/dart_pad/elements/elements.css" rel="stylesheet" media="screen">
+    <link href="styles/elements.css" rel="stylesheet" media="screen">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto'
         rel='stylesheet' type='text/css'>
@@ -39,11 +39,10 @@
 
   <body fullbleed layout vertical>
     <header layout horizontal>
-      <div class="header-title">DartPad</div>
+      <div class="header-title">6Pad</div>
       <div>
         <button type="button" id="newbutton" class="button">New Pad…</button>
         <button type="button" id="resetbutton" class="button" disabled>Reset…</button>
-        <button type="button" id="formatbutton" class="button">Format</button>
       </div>
       <div class="header-gist-name" flex></div>
       <div>
@@ -66,7 +65,7 @@
 
       <div class="view" flex three layout vertical>
         <div class="header" layout horizontal wrap>
-          <li><a id="darttab" selected class="arrow_box"><span>Dart</span></a></li>
+          <li><a id="darttab" selected class="arrow_box"><span>Perl 6</span></a></li>
           <li><a id="htmltab"><span>HTML</span></a></li>
           <li><a id="csstab"><span>CSS</span></a></li>
           <div flex></div>
@@ -118,8 +117,6 @@
     <footer layout horizontal>
       <div id="keyboard-button" class="keyboard footer-item"></div>
       <div>
-        <a href="https://github.com/dart-lang/dart-pad/wiki/Privacy-Policy"
-            target="repo" class="footer-item">Privacy policy</a>
         <a href="https://github.com/dart-lang/dart-pad/issues"
             target="repo">Send feedback</a>
       </div>
