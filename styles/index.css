@@ -563,3 +563,28 @@ div.toggle {
     display: none;
   }
 }
+
+/* CodeMirror tweaks */
+
+#editpanel .CodeMirror {
+  font-family: 'Inconsolata', monospace;
+  background: inherit;
+  color: inherit;
+  box-shadow: none;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#editpanel .CodeMirror-gutters {
+  background: inherit !important;
+  border-right: none;
+  box-shadow: none;
+}
+
+#editpanel .CodeMirror-lines {
+  padding: 0;
+}
