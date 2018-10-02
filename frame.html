@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<!-- Copyright (c) 2014, the Dart project authors.  Please see the AUTHORS file
+     for details. All rights reserved. Use of this source code is governed by a
+     BSD-style license that can be found in the LICENSE file. -->
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title></title>
+    <!--<link href='https://fonts.googleapis.com/css?family=Roboto'
+        rel='stylesheet' type='text/css'> -->
+    <style>
+      body {
+        color: #ddd;
+        font-size: 12pt;
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        margin-top: 0;
+      }
+    </style>
+    <script>
+
+replaceJavaScript = function(value) {
+  // Remove the old node.
+  var node = document.getElementById('scriptId');
+  if (node && node.parentNode) {
+    node.parentNode.removeChild(node);
+  }
+
+  // Create a new node.
+  var s = document.createElement('script');
+  s.setAttribute('defer', 'true');
+  s.text = value;
+  document.head.appendChild(s);
+}
+
+retriggerJavaScriptScripts = function() {
+  var scripts = document.body.getElementsByTagName("script");
+  for (var i = 0; i < scripts.length; ++i) {
+    var oldScript = scripts[i];
+    var newScript = document.createElement('script');
+    if (oldScript.src) newScript.src = oldScript.src;
+    newScript.textContent = oldScript.textContent;
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  }
+}
+
+messageHandler = function(e) {
+  // TODO: verify the domain is correct
+
+  var obj = e.data;
+  var command = obj.command;
+  var body = document.body;
+
+  if (command == 'setCss') {
+    document.getElementById('styleId').innerHTML = obj.css;
+  } else if (command == 'setHtml') {
+    body.innerHTML = obj.html;
+  } else if (command == 'execute') {
+    // Replace all three.
+    body.innerHTML = obj.html;
+    document.getElementById('styleId').innerHTML = obj.css;
+    setTimeout(function() {
+      replaceJavaScript(obj.js);
+      retriggerJavaScriptScripts();
+    }, 150);
+  }
+}
+
+window.setTimeout(function () {
+  window.addEventListener('message', messageHandler, false);
+  parent.postMessage({'sender': 'frame', 'type': 'ready'}, '*');
+}, 50);
+    </script>
+
+    <style id="styleId"></style>
+    <div id="scriptId" defer="true"></div>
+  </head>
+
+	<body>
+	</body>
+</html>
