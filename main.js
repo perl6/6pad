@@ -5,6 +5,12 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
 });
 
 document.getElementById('runbutton').addEventListener('click', function() {
+    const output = document.getElementById('output');
+
+    while (output.firstChild) {
+        output.removeChild(output.firstChild);
+    }
+
     const code = editor.getValue();
     window.evalP6(code);
 //  eval(code); // for quicker testing with js
