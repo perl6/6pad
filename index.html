@@ -35,20 +35,27 @@
 
     <script defer src="main.js"></script>
 
+    <script defer src="gen/eval_code.js"></script>
+
   </head>
 
   <body fullbleed layout vertical>
     <header layout horizontal>
       <div class="header-title">6Pad</div>
       <div>
+        <!--
         <button type="button" id="newbutton" class="button">New Pad…</button>
         <button type="button" id="resetbutton" class="button" disabled>Reset…</button>
+        -->
       </div>
       <div class="header-gist-name" flex></div>
       <div>
+        <!--
         <button type="button" id="sharebutton" class="button">Share…</button>
+        -->
       </div>
       <div>
+        <!--
         <select id="samples" required="false">
           <option value="0">Samples</option>
           <option disabled></option>
@@ -57,6 +64,7 @@
           <option value="49bde0c1ed780decc902f3d4d06d8f0c">Sunflower</option>
           <option value="479ecba5a56fd706b648">WebSockets</option>
         </select>
+        -->
       </div>
     </header>
 
@@ -66,8 +74,10 @@
       <div class="view" flex three layout vertical>
         <div class="header" layout horizontal wrap>
           <li><a id="darttab" selected class="arrow_box"><span>Perl 6</span></a></li>
+          <!--
           <li><a id="htmltab"><span>HTML</span></a></li>
           <li><a id="csstab"><span>CSS</span></a></li>
+          -->
           <div flex></div>
           <div id="dartbusy" class="busylight"></div>
           <div>
@@ -95,7 +105,9 @@
           <div id="frame-overlay"></div>
           <div class="header" layout horizontal wrap>
             <div flex></div>
+            <!--
             <li><a id="resulttab"><span>HTML Output</span></a></li>
+            -->
             <li><a id="consoletab" selected last><span>Console</span></a></li>
             <div id="consolebusy" class="busylight"></div>
           </div>

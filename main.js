@@ -5,8 +5,8 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
 
 document.getElementById('runbutton').addEventListener('click', function() {
     const code = editor.getValue();
-    console.log('Running', code);
-    eval(code);
+    window.evalP6(code);
+//  eval(code); // for quicker testing with js
 });
 
 async function loadGist(gist) {
@@ -25,3 +25,7 @@ async function loadGist(gist) {
 if (document.location.hash) {
     loadGist(document.location.hash.substr(1));
 }
+
+window.NQP_STDOUT = function(str) {
+  document.getElementById('output').appendChild(document.createTextNode(str));
+};
