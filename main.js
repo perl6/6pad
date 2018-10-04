@@ -29,3 +29,9 @@ if (document.location.hash) {
 window.NQP_STDOUT = function(str) {
   document.getElementById('output').appendChild(document.createTextNode(str));
 };
+
+try {
+  eval('1n');
+} catch (e) {
+  alert("Your browser doesn't support BigInt, try Chrome");
+}
