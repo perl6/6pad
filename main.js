@@ -10,6 +10,10 @@ document.getElementById('runbutton').addEventListener('click', function() {
 //  eval(code); // for quicker testing with js
 });
 
+document.getElementById('sharebutton').addEventListener('click', function() {
+    window.open('https://github.com/perl6/6pad/wiki/Sharing-Guide', '_blank');
+});
+
 async function loadGist(gist) {
   const response = await fetch("https://api.github.com/gists/" + gist);
   const json = await response.json();
