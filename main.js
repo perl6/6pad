@@ -1,7 +1,16 @@
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     theme: 'zenburn',
-    mode: 'perl6'
+    mode: 'perl6',
+    lineWrapping: true,
+    cursorHeight: 0.85,
+    tabSize: 4,
+    indentUnit: 4,
+    // Increase the number of lines that are rendered above and before
+    viewportMargin: 100,
+    autofocus: false,
+    autoCloseBrackets: true,
+    matchBrackets: true,
 });
 
 document.getElementById('runbutton').addEventListener('click', function() {
