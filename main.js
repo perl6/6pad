@@ -1,6 +1,7 @@
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-    theme: 'zenburn'
+    theme: 'zenburn',
+    mode: 'perl6'
 });
 
 document.getElementById('runbutton').addEventListener('click', function() {
