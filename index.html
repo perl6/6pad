@@ -31,6 +31,10 @@
     <script src="lib/edit/closebrackets.js" defer></script>
     <script src="lib/edit/matchbrackets.js" defer></script>
     <script src="lib/perl6-mode.js" defer></script>
+    <script src="lib/xml.js" defer></script>
+    <script src="lib/javascript.js" defer></script>
+    <script src="lib/css.js" defer></script>
+    <script src="lib/htmlmixed.js" defer></script>
 
     <!--
     <link href="packages/codemirror/addon/lint/lint.css" rel="stylesheet" media="screen">
@@ -76,11 +80,9 @@
 
       <div class="view" flex three layout vertical>
         <div class="header" layout horizontal wrap>
-          <li><a id="darttab" selected class="arrow_box"><span>Perl 6</span></a></li>
-          <!--
+          <li><a id="perltab" selected class="arrow_box"><span>Perl 6</span></a></li>
           <li><a id="htmltab"><span>HTML</span></a></li>
           <li><a id="csstab"><span>CSS</span></a></li>
-          -->
           <div flex></div>
           <div id="dartbusy" class="busylight"></div>
           <div>
@@ -108,9 +110,7 @@
           <div id="frame-overlay"></div>
           <div class="header" layout horizontal wrap>
             <div flex></div>
-            <!--
             <li><a id="resulttab"><span>HTML Output</span></a></li>
-            -->
             <li><a id="consoletab" selected last><span>Console</span></a></li>
             <div id="consolebusy" class="busylight"></div>
           </div>
