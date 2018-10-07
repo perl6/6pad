@@ -588,3 +588,11 @@ div.toggle {
 #editpanel .CodeMirror-lines {
   padding: 0;
 }
+
+.nyi {
+  color: red;
+}
+
+div[hidden] {
+  display: none;
+}

@@ -1,3 +1,10 @@
+try {
+  eval('1n');
+  document.getElementById('runbutton').removeAttribute('disabled');
+} catch (e) {
+  document.getElementById('missingbigint').removeAttribute('hidden');
+}
+
 const perlDoc = new CodeMirror.Doc('', 'perl6');
 const htmlDoc = new CodeMirror.Doc('', 'html');
 const cssDoc = new CodeMirror.Doc('', 'css');
@@ -105,8 +112,3 @@ window.NQP_STDOUT = function(str) {
   document.getElementById('output').appendChild(document.createTextNode(str));
 };
 
-try {
-  eval('1n');
-} catch (e) {
-  alert("Your browser doesn't support BigInt, try Chrome");
-}
