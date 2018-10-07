@@ -44,7 +44,7 @@
 
     <script defer src="main.js"></script>
 
-    <script defer src="gen/eval_code.js"></script>
+    <!--<script defer src="gen/eval_code.js"></script>-->
 
   </head>
 
@@ -114,11 +114,9 @@
             <li><a id="consoletab" selected last><span>Console</span></a></li>
             <div id="consolebusy" class="busylight"></div>
           </div>
-          <div id="output" class="console" flex><div id='missingbigint' class="nyi" hidden>Sorry, running in browsers that don't implement <a href="https://developers.google.com/web/updates/2018/05/bigint">BigInt</a> is not yet implemented :( . For now try running in <a href="https://www.google.com/chrome/">Chrome</a>.</div>
-          <!-- TODO: We might want to embed the iframe into a div, and set -->
-          <!-- div to overflow: scroll. -->
-          <iframe id="frame" sandbox="allow-scripts" flex src="frame.html">
-          </iframe>
+          <div id="output" class="console" flex><div id='missingbigint' class="nyi" hidden>Sorry, running in browsers that don't implement <a href="https://developers.google.com/web/updates/2018/05/bigint">BigInt</a> is not yet implemented :( . For now try running in <a href="https://www.google.com/chrome/">Chrome</a>.</div></div>
+          <style id='csspart'></style>
+          <div id="frame" flex></div>
         </div>
       </div>
     </section>

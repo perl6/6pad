@@ -73,13 +73,13 @@ setupTabs([
     button: document.getElementById("resulttab"),
     action:  function() {
        output.style.visibility = 'hidden';
-       frame.style.visibility = '';
+       frame.style.visibility = 'visible';
     }
   },
   {
     button: document.getElementById("consoletab"),
     action:  function() {
-       output.style.visibility = '';
+       output.style.visibility = 'visible';
        frame.style.visibility = 'hidden';
     }
   },
@@ -112,3 +112,29 @@ window.NQP_STDOUT = function(str) {
   document.getElementById('output').appendChild(document.createTextNode(str));
 };
 
+
+
+class Reconciler {
+  constructor(source, set) {
+    this.source = source;
+    this.targetValue = '';
+    this.set = set;
+    window.setInterval(() => {
+      const newValue = this.source.getValue();
+      if (newValue != this.targetValue) {
+        this.set(newValue);
+        this.targetValue = newValue;
+      }
+    });
+  }
+};
+
+new Reconciler(htmlDoc, html => frame.innerHTML = html);
+
+const cssPart = document.getElementById('csspart');
+new Reconciler(cssDoc, css => {
+  while (cssPart.firstChild) {
+    cssPart.removeChild(cssPart.firstChild);
+  }
+  cssPart.appendChild(document.createTextNode(css));
+});
