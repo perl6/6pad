@@ -6,7 +6,7 @@ try {
 }
 
 const perlDoc = new CodeMirror.Doc('', 'perl6');
-const htmlDoc = new CodeMirror.Doc('', 'html');
+const htmlDoc = new CodeMirror.Doc('', 'htmlmixed');
 const cssDoc = new CodeMirror.Doc('', 'css');
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
