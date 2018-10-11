@@ -1,9 +1,24 @@
+let supported = false;
+let loaded = false;
+
+function updateButton() {
+  if (supported && loaded) {
+    document.getElementById('runbutton').removeAttribute('disabled');
+  }
+}
+
 try {
+  supported = true;
+  updateButton();
   eval('1n');
-  document.getElementById('runbutton').removeAttribute('disabled');
 } catch (e) {
   document.getElementById('missingbigint').removeAttribute('hidden');
 }
+
+window.addEventListener("load", function(event) {
+  loaded = true;
+  updateButton();
+});
 
 const perlDoc = new CodeMirror.Doc('', 'perl6');
 const htmlDoc = new CodeMirror.Doc('', 'htmlmixed');
