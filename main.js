@@ -128,7 +128,13 @@ window.NQP_STDOUT = function(str) {
   document.getElementById('output').appendChild(span);
 };
 
-
+const samples = document.getElementById('samples');
+samples.onchange = function() {
+  if (samples.value && samples.value != '0') {
+    document.location.hash = samples.value;
+    loadGist(samples.value);
+  }
+}
 
 class Reconciler {
   constructor(source, set) {
