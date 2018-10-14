@@ -45,7 +45,6 @@ document.getElementById('runbutton').addEventListener('click', function() { cons
 
     const code = editor.getValue();
     window.evalP6(code);
-//  eval(code); // for quicker testing with js
 });
 
 document.getElementById('sharebutton').addEventListener('click', function() {
@@ -124,7 +123,9 @@ if (document.location.hash) {
 }
 
 window.NQP_STDOUT = function(str) {
-  document.getElementById('output').appendChild(document.createTextNode(str));
+  const span = document.createElement('span');
+  span.innerHTML = str;
+  document.getElementById('output').appendChild(span);
 };
 
 
