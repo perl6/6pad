@@ -35,15 +35,16 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     autofocus: false,
     autoCloseBrackets: true,
     matchBrackets: true,
-    value: perlDoc
 });
+
+editor.swapDoc(perlDoc);
 
 document.getElementById('runbutton').addEventListener('click', function() { const output = document.getElementById('output');
     while (output.firstChild) {
         output.removeChild(output.firstChild);
     }
 
-    const code = editor.getValue();
+    const code = perlDoc.getValue();
     window.evalP6(code);
 });
 
@@ -105,18 +106,17 @@ async function loadGist(gist) {
   const json = await response.json();
   for (const fileName in json.files) {
       const file = json.files[fileName];
-      if (file === 'main.p6') {
+      if (fileName === 'main.p6') {
           perlDoc.setValue(file.content);
-      }
-      if (file === 'index.html') {
+      } else if (fileName === 'index.html') {
           htmlDoc.setValue(file.content);
-      }
-      if (file === 'styles.css') {
+      } else if (fileName === 'styles.css') {
           cssDoc.setValue(file.content);
+      } else {
+          window.NQP_STDOUT('Unrecognized file in gist: ' + fileName);
       }
   }
 }
-
 
 if (document.location.hash) {
     loadGist(document.location.hash.substr(1));
