@@ -118,7 +118,9 @@ async function loadGist(gist) {
   }
 }
 
+console.log('document.location.hash', document.location.hash);
 if (document.location.hash) {
+    console.log('hash', document.location.hash);
     loadGist(document.location.hash.substr(1));
 }
 
