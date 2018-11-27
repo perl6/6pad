@@ -1,18 +1,9 @@
-let supported = false;
 let loaded = false;
 
 function updateButton() {
-  if (supported && loaded) {
+  if (loaded) {
     document.getElementById('runbutton').removeAttribute('disabled');
   }
-}
-
-try {
-  supported = true;
-  updateButton();
-  eval('1n');
-} catch (e) {
-  document.getElementById('missingbigint').removeAttribute('hidden');
 }
 
 window.addEventListener("load", function(event) {
