@@ -95,6 +95,10 @@ button.close:hover {
   border-left: 1px solid #121212;
 }
 
+#frame {
+  overflow: auto;
+}
+
 /* style the <select> element */
 
 select {
