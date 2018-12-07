@@ -64,14 +64,12 @@ button.close:hover {
   width: auto;
   height: 48px;
   min-height: 48px;
-  cursor: row-resize;
 }
 
 .splitter[vertical] {
   width: 48px;
   min-width: 48px;
   height: auto;
-  cursor: col-resize;
 }
 
 .inner {
