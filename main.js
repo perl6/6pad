@@ -43,20 +43,27 @@ document.getElementById('sharebutton').addEventListener('click', function() {
     window.open('https://github.com/perl6/6pad/wiki/Sharing-Guide', '_blank');
 });
 
-function setupTabs(tabs, defaultIndex) {
-  let selected = tabs[defaultIndex].button;
+class Tabs {
+  constructor(tabs, defaultIndex) {
+    this.tabs = tabs;
+    this.selected = tabs[defaultIndex].button;
 
-  for (const tab of tabs) {
-    tab.button.addEventListener('click', function() {
-      tab.action();
-      selected.removeAttribute('selected');
-      tab.button.setAttribute('selected', '');
-      selected = tab.button;
-    });
+    for (const tab of tabs) {
+      tab.button.addEventListener('click', () => {
+        this.select(tab);
+      });
+    }
+  }
+
+  select(tab) {
+    tab.action();
+    this.selected.removeAttribute('selected');
+    tab.button.setAttribute('selected', '');
+    this.selected = tab.button;
   }
 }
 
-setupTabs([
+new Tabs([
   {
     button: document.getElementById("perltab"),
     action:  function() {editor.swapDoc(perlDoc)}
@@ -74,7 +81,7 @@ setupTabs([
 const output = document.getElementById("output");
 const frame = document.getElementById("frame");
 
-setupTabs([
+const outputTabs = new Tabs([
   {
     button: document.getElementById("resulttab"),
     action:  function() {
@@ -101,6 +108,7 @@ async function loadGist(gist) {
           perlDoc.setValue(file.content);
       } else if (fileName === 'index.html') {
           htmlDoc.setValue(file.content);
+          outputTabs.select(outputTabs.tabs[0]);
       } else if (fileName === 'styles.css') {
           cssDoc.setValue(file.content);
       } else {
